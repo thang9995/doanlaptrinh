@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e69e4addd024cb6b75a69fbf0e8eaee" Name="Diagram1">
+        <EntityTypeShape EntityType="ManagerCarModel.address" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.branch" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.car" Width="1.5" PointX="9.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.distributor" Width="1.5" PointX="2.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.staff" Width="1.5" PointX="9.875" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="ManagerCarModel.FK__branch__addressI__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerCarModel.FK__distribut__addre__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerCarModel.FK__staff__addressId__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerCarModel.FK__car__distributor__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerCarModel.FK__staff__carId__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ManagerCarModel.FK__staff__distribut__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

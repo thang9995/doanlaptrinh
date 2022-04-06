@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ManagerCarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ward" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="district" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="province" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="addressId" Type="int" />
+        </EntityType>
+        <EntityType Name="car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="date" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="year_created" Type="int" Nullable="false" />
+          <Property Name="distributorId" Type="int" />
+        </EntityType>
+        <EntityType Name="distributor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="addressId" Type="int" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="brithday" Type="date" Nullable="false" />
+          <Property Name="cart_number" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="salary" Type="int" Nullable="false" />
+          <Property Name="distributorId" Type="int" />
+          <Property Name="carId" Type="int" />
+          <Property Name="addressId" Type="int" />
+        </EntityType>
+        <Association Name="FK__branch__addressI__48CFD27E">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="branch" Type="Self.branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="branch">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__car__distributor__4BAC3F29">
+          <End Role="distributor" Type="Self.distributor" Multiplicity="0..1" />
+          <End Role="car" Type="Self.car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distributor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="car">
+              <PropertyRef Name="distributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__distribut__addre__45F365D3">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="distributor" Type="Self.distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="distributor">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__addressId__5070F446">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__carId__4E88ABD4">
+          <End Role="car" Type="Self.car" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="car">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="carId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__distribut__4F7CD00D">
+          <End Role="distributor" Type="Self.distributor" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distributor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="distributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ManagerCarModelStoreContainer">
+          <EntitySet Name="address" EntityType="Self.address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="car" EntityType="Self.car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="distributor" EntityType="Self.distributor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__branch__addressI__48CFD27E" Association="Self.FK__branch__addressI__48CFD27E">
+            <End Role="address" EntitySet="address" />
+            <End Role="branch" EntitySet="branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__car__distributor__4BAC3F29" Association="Self.FK__car__distributor__4BAC3F29">
+            <End Role="distributor" EntitySet="distributor" />
+            <End Role="car" EntitySet="car" />
+          </AssociationSet>
+          <AssociationSet Name="FK__distribut__addre__45F365D3" Association="Self.FK__distribut__addre__45F365D3">
+            <End Role="address" EntitySet="address" />
+            <End Role="distributor" EntitySet="distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__addressId__5070F446" Association="Self.FK__staff__addressId__5070F446">
+            <End Role="address" EntitySet="address" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__carId__4E88ABD4" Association="Self.FK__staff__carId__4E88ABD4">
+            <End Role="car" EntitySet="car" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__distribut__4F7CD00D" Association="Self.FK__staff__distribut__4F7CD00D">
+            <End Role="distributor" EntitySet="distributor" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ManagerCarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="branch" Relationship="Self.FK__branch__addressI__48CFD27E" FromRole="address" ToRole="branch" />
+          <NavigationProperty Name="distributor" Relationship="Self.FK__distribut__addre__45F365D3" FromRole="address" ToRole="distributor" />
+          <NavigationProperty Name="staff" Relationship="Self.FK__staff__addressId__5070F446" FromRole="address" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addressId" Type="Int32" />
+          <NavigationProperty Name="address" Relationship="Self.FK__branch__addressI__48CFD27E" FromRole="branch" ToRole="address" />
+        </EntityType>
+        <EntityType Name="car">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="year_created" Type="Int32" Nullable="false" />
+          <Property Name="distributorId" Type="Int32" />
+          <NavigationProperty Name="distributor" Relationship="Self.FK__car__distributor__4BAC3F29" FromRole="car" ToRole="distributor" />
+          <NavigationProperty Name="staff" Relationship="Self.FK__staff__carId__4E88ABD4" FromRole="car" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="distributor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addressId" Type="Int32" />
+          <NavigationProperty Name="address" Relationship="Self.FK__distribut__addre__45F365D3" FromRole="distributor" ToRole="address" />
+          <NavigationProperty Name="car" Relationship="Self.FK__car__distributor__4BAC3F29" FromRole="distributor" ToRole="car" />
+          <NavigationProperty Name="staff" Relationship="Self.FK__staff__distribut__4F7CD00D" FromRole="distributor" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="brithday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cart_number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="salary" Type="Int32" Nullable="false" />
+          <Property Name="distributorId" Type="Int32" />
+          <Property Name="carId" Type="Int32" />
+          <Property Name="addressId" Type="Int32" />
+          <NavigationProperty Name="address" Relationship="Self.FK__staff__addressId__5070F446" FromRole="staff" ToRole="address" />
+          <NavigationProperty Name="car" Relationship="Self.FK__staff__carId__4E88ABD4" FromRole="staff" ToRole="car" />
+          <NavigationProperty Name="distributor" Relationship="Self.FK__staff__distribut__4F7CD00D" FromRole="staff" ToRole="distributor" />
+        </EntityType>
+        <Association Name="FK__branch__addressI__48CFD27E">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="branch" Type="Self.branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="branch">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__distribut__addre__45F365D3">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="distributor" Type="Self.distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="distributor">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__addressId__5070F446">
+          <End Role="address" Type="Self.address" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__car__distributor__4BAC3F29">
+          <End Role="distributor" Type="Self.distributor" Multiplicity="0..1" />
+          <End Role="car" Type="Self.car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distributor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="car">
+              <PropertyRef Name="distributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__carId__4E88ABD4">
+          <End Role="car" Type="Self.car" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="car">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="carId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__staff__distribut__4F7CD00D">
+          <End Role="distributor" Type="Self.distributor" Multiplicity="0..1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distributor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="distributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ManagerCarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="address" EntityType="Self.address" />
+          <EntitySet Name="branch" EntityType="Self.branch" />
+          <EntitySet Name="car" EntityType="Self.car" />
+          <EntitySet Name="distributor" EntityType="Self.distributor" />
+          <EntitySet Name="staff" EntityType="Self.staff" />
+          <AssociationSet Name="FK__branch__addressI__48CFD27E" Association="Self.FK__branch__addressI__48CFD27E">
+            <End Role="address" EntitySet="address" />
+            <End Role="branch" EntitySet="branch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__distribut__addre__45F365D3" Association="Self.FK__distribut__addre__45F365D3">
+            <End Role="address" EntitySet="address" />
+            <End Role="distributor" EntitySet="distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__addressId__5070F446" Association="Self.FK__staff__addressId__5070F446">
+            <End Role="address" EntitySet="address" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__car__distributor__4BAC3F29" Association="Self.FK__car__distributor__4BAC3F29">
+            <End Role="distributor" EntitySet="distributor" />
+            <End Role="car" EntitySet="car" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__carId__4E88ABD4" Association="Self.FK__staff__carId__4E88ABD4">
+            <End Role="car" EntitySet="car" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__staff__distribut__4F7CD00D" Association="Self.FK__staff__distribut__4F7CD00D">
+            <End Role="distributor" EntitySet="distributor" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ManagerCarModelStoreContainer" CdmEntityContainer="ManagerCarEntities">
+          <EntitySetMapping Name="address">
+            <EntityTypeMapping TypeName="ManagerCarModel.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="address_number" ColumnName="address_number" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="ward" ColumnName="ward" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="province" ColumnName="province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="branch">
+            <EntityTypeMapping TypeName="ManagerCarModel.branch">
+              <MappingFragment StoreEntitySet="branch">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="car">
+            <EntityTypeMapping TypeName="ManagerCarModel.car">
+              <MappingFragment StoreEntitySet="car">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="year_created" ColumnName="year_created" />
+                <ScalarProperty Name="distributorId" ColumnName="distributorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="distributor">
+            <EntityTypeMapping TypeName="ManagerCarModel.distributor">
+              <MappingFragment StoreEntitySet="distributor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staff">
+            <EntityTypeMapping TypeName="ManagerCarModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="brithday" ColumnName="brithday" />
+                <ScalarProperty Name="cart_number" ColumnName="cart_number" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="distributorId" ColumnName="distributorId" />
+                <ScalarProperty Name="carId" ColumnName="carId" />
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
