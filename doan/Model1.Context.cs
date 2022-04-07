@@ -13,10 +13,10 @@ namespace doan
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ManagerCarEntities : DbContext
+    public partial class ManagerCarEntities2 : DbContext
     {
-        public ManagerCarEntities()
-            : base("name=ManagerCarEntities")
+        public ManagerCarEntities2()
+            : base("name=ManagerCarEntities2")
         {
         }
     
@@ -26,6 +26,7 @@ namespace doan
         }
     
         public virtual DbSet<address> address { get; set; }
+        public virtual DbSet<admin> admin { get; set; }
         public virtual DbSet<branch> branch { get; set; }
         public virtual DbSet<car> car { get; set; }
         public virtual DbSet<distributor> distributor { get; set; }

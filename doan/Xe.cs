@@ -15,6 +15,14 @@ namespace doan
         public Xe()
         {
             InitializeComponent();
+            loadDistributor();
+        }
+        private void loadDistributor()
+        {
+            ManagerCarEntities2 db = new ManagerCarEntities2();
+            cb_distributor.DataSource = db.distributor.ToList();
+            cb_distributor.DisplayMember = "name";
+            cb_distributor.ValueMember = "id";
         }
 
         private void Xe_Load(object sender, EventArgs e)
@@ -23,7 +31,7 @@ namespace doan
         }
         private void LoadXeList()
         {
-            ManagerCarEntities db = new ManagerCarEntities();
+            ManagerCarEntities2 db = new ManagerCarEntities2();
             car carDb = new car();
             distributor distributorDb = new distributor();   
             dgvdata.DataSource = db.car.Select(abc => new
@@ -46,7 +54,7 @@ namespace doan
             {
 
                 id_selected = dgvdata.SelectedRows[0].Cells[0].Value.ToString();
-                ManagerCarEntities db = new ManagerCarEntities();
+                ManagerCarEntities2 db = new ManagerCarEntities2();
                 car carValue = db.car.SingleOrDefault(
                     xyz => xyz.id.ToString() == id_selected);
                 txttenxe.Text = carValue.name;

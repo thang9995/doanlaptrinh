@@ -47,7 +47,7 @@ namespace doan
             this.lbmau = new System.Windows.Forms.Label();
             this.txtamount = new System.Windows.Forms.NumericUpDown();
             this.date = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_distributor = new System.Windows.Forms.ComboBox();
             this.txtnamsx = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtamount)).BeginInit();
@@ -232,19 +232,24 @@ namespace doan
             this.date.TabIndex = 54;
             this.date.ValueChanged += new System.EventHandler(this.date_ValueChanged);
             // 
-            // comboBox1
+            // cb_distributor
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(181, 191);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(563, 33);
-            this.comboBox1.TabIndex = 55;
+            this.cb_distributor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cb_distributor.FormattingEnabled = true;
+            this.cb_distributor.Location = new System.Drawing.Point(181, 191);
+            this.cb_distributor.Name = "cb_distributor";
+            this.cb_distributor.Size = new System.Drawing.Size(563, 33);
+            this.cb_distributor.TabIndex = 55;
             // 
             // txtnamsx
             // 
             this.txtnamsx.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnamsx.Location = new System.Drawing.Point(182, 248);
+            this.txtnamsx.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.txtnamsx.Name = "txtnamsx";
             this.txtnamsx.Size = new System.Drawing.Size(563, 30);
             this.txtnamsx.TabIndex = 56;
@@ -255,7 +260,7 @@ namespace doan
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 574);
             this.Controls.Add(this.txtnamsx);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cb_distributor);
             this.Controls.Add(this.date);
             this.Controls.Add(this.txtamount);
             this.Controls.Add(this.lbmau);
@@ -275,7 +280,7 @@ namespace doan
             this.Controls.Add(this.btndel);
             this.Controls.Add(this.btnadd);
             this.Name = "Xe";
-            this.Text = "uiuiiiiiiiuiuiiiiiiuiuuiuiuiuiuiuiuiuiuiiiiiiiiiiiiiiiiiiiiiiii";
+            this.Text = "Xe";
             this.Load += new System.EventHandler(this.Xe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtamount)).EndInit();
@@ -305,7 +310,7 @@ namespace doan
         internal System.Windows.Forms.Label lbmau;
         private System.Windows.Forms.NumericUpDown txtamount;
         private System.Windows.Forms.DateTimePicker date;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_distributor;
         private System.Windows.Forms.NumericUpDown txtnamsx;
     }
 }

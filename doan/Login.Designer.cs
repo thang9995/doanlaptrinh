@@ -31,8 +31,8 @@ namespace doan
         {
             this.lbid = new System.Windows.Forms.Label();
             this.lbmk = new System.Windows.Forms.Label();
-            this.txtcn = new System.Windows.Forms.TextBox();
-            this.txtdiachi = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
+            this.tb_pass = new System.Windows.Forms.TextBox();
             this.btnlogin = new System.Windows.Forms.Button();
             this.lbtaikhoan = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -57,26 +57,26 @@ namespace doan
             this.lbmk.TabIndex = 84;
             this.lbmk.Text = "Mật Khẩu";
             // 
-            // txtcn
+            // tb_name
             // 
-            this.txtcn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcn.Location = new System.Drawing.Point(242, 170);
-            this.txtcn.Name = "txtcn";
-            this.txtcn.Size = new System.Drawing.Size(361, 30);
-            this.txtcn.TabIndex = 83;
+            this.tb_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_name.Location = new System.Drawing.Point(242, 170);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(361, 30);
+            this.tb_name.TabIndex = 83;
             // 
-            // txtdiachi
+            // tb_pass
             // 
-            this.txtdiachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdiachi.Location = new System.Drawing.Point(242, 248);
-            this.txtdiachi.Name = "txtdiachi";
-            this.txtdiachi.Size = new System.Drawing.Size(361, 30);
-            this.txtdiachi.TabIndex = 82;
+            this.tb_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_pass.Location = new System.Drawing.Point(242, 248);
+            this.tb_pass.Name = "tb_pass";
+            this.tb_pass.Size = new System.Drawing.Size(361, 30);
+            this.tb_pass.TabIndex = 82;
             // 
             // btnlogin
             // 
             this.btnlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogin.Location = new System.Drawing.Point(302, 313);
+            this.btnlogin.Location = new System.Drawing.Point(242, 327);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(229, 70);
             this.btnlogin.TabIndex = 86;
@@ -87,12 +87,12 @@ namespace doan
             // lbtaikhoan
             // 
             this.lbtaikhoan.AutoSize = true;
-            this.lbtaikhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbtaikhoan.Location = new System.Drawing.Point(226, 9);
+            this.lbtaikhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.lbtaikhoan.Location = new System.Drawing.Point(231, 49);
             this.lbtaikhoan.Name = "lbtaikhoan";
-            this.lbtaikhoan.Size = new System.Drawing.Size(399, 91);
+            this.lbtaikhoan.Size = new System.Drawing.Size(290, 63);
             this.lbtaikhoan.TabIndex = 88;
-            this.lbtaikhoan.Text = "Tài Khoản";
+            this.lbtaikhoan.Text = "Đăng nhập";
             // 
             // Login
             // 
@@ -103,10 +103,10 @@ namespace doan
             this.Controls.Add(this.btnlogin);
             this.Controls.Add(this.lbid);
             this.Controls.Add(this.lbmk);
-            this.Controls.Add(this.txtcn);
-            this.Controls.Add(this.txtdiachi);
+            this.Controls.Add(this.tb_name);
+            this.Controls.Add(this.tb_pass);
             this.Name = "Login";
-            this.Text = "Index";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -117,8 +117,8 @@ namespace doan
 
         internal System.Windows.Forms.Label lbid;
         internal System.Windows.Forms.Label lbmk;
-        internal System.Windows.Forms.TextBox txtcn;
-        internal System.Windows.Forms.TextBox txtdiachi;
+        internal System.Windows.Forms.TextBox tb_name;
+        internal System.Windows.Forms.TextBox tb_pass;
         internal System.Windows.Forms.Button btnlogin;
         internal System.Windows.Forms.Label lbtaikhoan;
     }

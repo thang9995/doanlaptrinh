@@ -16,6 +16,14 @@
           <Property Name="district" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="province" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="branch">
           <Key>
             <PropertyRef Name="id" />
@@ -131,6 +139,7 @@
         </Association>
         <EntityContainer Name="ManagerCarModelStoreContainer">
           <EntitySet Name="address" EntityType="Self.address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="car" EntityType="Self.car" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="distributor" EntityType="Self.distributor" Schema="dbo" store:Type="Tables" />
@@ -178,6 +187,14 @@
           <NavigationProperty Name="branch" Relationship="Self.FK__branch__addressI__48CFD27E" FromRole="address" ToRole="branch" />
           <NavigationProperty Name="distributor" Relationship="Self.FK__distribut__addre__45F365D3" FromRole="address" ToRole="distributor" />
           <NavigationProperty Name="staff" Relationship="Self.FK__staff__addressId__5070F446" FromRole="address" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="branch">
           <Key>
@@ -301,8 +318,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ManagerCarEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ManagerCarEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="address" EntityType="Self.address" />
+          <EntitySet Name="admin" EntityType="Self.admin" />
           <EntitySet Name="branch" EntityType="Self.branch" />
           <EntitySet Name="car" EntityType="Self.car" />
           <EntitySet Name="distributor" EntityType="Self.distributor" />
@@ -337,7 +355,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ManagerCarModelStoreContainer" CdmEntityContainer="ManagerCarEntities">
+        <EntityContainerMapping StorageEntityContainer="ManagerCarModelStoreContainer" CdmEntityContainer="ManagerCarEntities2">
           <EntitySetMapping Name="address">
             <EntityTypeMapping TypeName="ManagerCarModel.address">
               <MappingFragment StoreEntitySet="address">
@@ -347,6 +365,15 @@
                 <ScalarProperty Name="ward" ColumnName="ward" />
                 <ScalarProperty Name="district" ColumnName="district" />
                 <ScalarProperty Name="province" ColumnName="province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="ManagerCarModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

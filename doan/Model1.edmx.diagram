@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4e69e4addd024cb6b75a69fbf0e8eaee" Name="Diagram1">
+      <Diagram DiagramId="cfa6c1b9d2ea4c6491d8c5ccb194ba31" Name="Diagram1">
         <EntityTypeShape EntityType="ManagerCarModel.address" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.admin" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ManagerCarModel.branch" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerCarModel.car" Width="1.5" PointX="9.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerCarModel.distributor" Width="1.5" PointX="2.875" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ManagerCarModel.staff" Width="1.5" PointX="9.875" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.car" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.distributor" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManagerCarModel.staff" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
         <AssociationConnector Association="ManagerCarModel.FK__branch__addressI__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="ManagerCarModel.FK__distribut__addre__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="ManagerCarModel.FK__staff__addressId__5070F446" ManuallyRouted="false" />

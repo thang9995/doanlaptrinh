@@ -16,5 +16,48 @@ namespace doan
         {
             InitializeComponent();
         }
+
+        private void Index_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            NhanVien nv = new NhanVien();
+            nv.Show();
+        }
+
+        private void xeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nhàPhânPhốiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nhàSảnXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void địaChỉToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login lg = new Login();
+            lg.Show(); 
+        }
     }
 }
